@@ -1,7 +1,7 @@
 nidhogg:
   yggdrasil:
     repoURL: "https://github.com/Energy-Track-and-Trace/ett-base-environment.git"
-    targetRevision: "kind-configuration"
+    targetRevision: "xjakk-test"
 
     ingressDomain: dev2.eloprindelse.dk
 

@@ -25,6 +25,8 @@ module "nsg" {
   location             = azurerm_resource_group.main.location
 }
 
+
+
 /*
 Port mappings for when module.public_ip is the one used by ingress
 resource "azurerm_network_security_rule" "http" {

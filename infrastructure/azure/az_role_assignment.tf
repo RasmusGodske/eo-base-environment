@@ -12,13 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-resource "azurerm_role_assignment" "main" {
-  depends_on = [
-    module.kubernetes,
-    azurerm_resource_group.main
-  ]
+# resource "azurerm_role_assignment" "main" {
+#   depends_on = [
+#     module.kubernetes,
+#     azurerm_resource_group.main
+#   ]
 
-  scope                = azurerm_resource_group.main.id
-  role_definition_name = "network contributor"
-  principal_id         = module.kubernetes.principal_id
-}
+#   scope                = azurerm_resource_group.main.id
+#   role_definition_name = "network contributor"
+#   principal_id         = module.kubernetes.principal_id
+# }

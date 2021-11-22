@@ -2,10 +2,7 @@ eo-base-helm-chart:
   deployments:
     api:
       image:
-        tag: v0.0.5
-    consumer:
-      image:
-        tag: v0.0.5
+        tag: v0.0.7
   env:
     DEBUG: 1
     EVENT_BUS_HOST: dev-cluster-kafka-bootstrap.eo-kafka.svc.cluster.local
@@ -14,4 +11,7 @@ eo-base-helm-chart:
     SQL_URI: postgresql://postgres:1234@eo-postgresql.eo-postgresql.svc.cluster.local:5432/auth
   ingress:
     hosts:
-    - '{{ .Values.ingressDomain }}'
+      - '{{ .Values.ingressDomain }}'
+    httpMiddelwares: 
+      - https-only
+    tlsSecretName: elop-cert

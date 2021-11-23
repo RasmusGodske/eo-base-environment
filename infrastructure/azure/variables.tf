@@ -40,6 +40,20 @@ variable "azure_aks_spn_name" {
   type        = string
 }
 
+
+variable "azure_aks_spn_rg" {
+  description = "rg name"
+  type        = string
+}
+
+
+variable "azure_aks_spn_create" {
+  description = "generate the spn user"
+  type        = bool
+  default     = true
+}
+
+
 variable "generate_fqdn" {
   description = "generates a fqdn on azure"
   type        = bool

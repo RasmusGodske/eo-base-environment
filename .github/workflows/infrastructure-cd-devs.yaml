@@ -62,10 +62,12 @@ jobs:
         run: |
           echo "TERRAFORM_STATE_RG_NAME=rg-${{ env.PROJECT_NAME }}-tfstate-${{ env.ENVIRONMENT_SHORT }}-${{ steps.extract_branch.outputs.branch }}" >> $GITHUB_ENV
           echo "ENVIRONMENT_INSTANCE=${{ steps.extract_branch.outputs.branch }}" >> $GITHUB_ENV
-          echo "AZURE_RG_NAME=rg-${{ env.PROJECT_NAME }}-${{ env.ENVIRONMENT_SHORT }}-${{ env.ENVIRONMENT_INSTANCE }}" >> $GITHUB_ENV
+          echo "AZURE_RG_NAME=rg-${{ env.PROJECT_NAME }}-${{ env.ENVIRONMENT_SHORT }}-${{ steps.extract_branch.outputs.branch }}" >> $GITHUB_ENV
           echo "TF_VAR_generate_fqdn=true" >> $GITHUB_ENV
           echo "TF_VAR_azure_spn_object_id=${{ secrets.AZURE_SPN_OBJECT_ID }}" >> $GITHUB_ENV
           echo "TF_VAR_azure_aks_spn_name=${{ secrets.AZURE_AKS_SPN_NAME }}" >> $GITHUB_ENV
+          echo "TF_VAR_azure_aks_spn_create=false" >> $GITHUB_ENV
+          echo "TF_VAR_azure_aks_spn_rg=rg-ett-U-001" >> $GITHUB_ENV
 
       - name: Terraform CD Azure
         uses: Energinet-DataHub/.github/.github/actions/terraform-apply@8f5b1b08392de65bdff19ec719f8413b5772eb79
@@ -81,7 +83,7 @@ jobs:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           AZURE_RG_NAME: ${{ env.AZURE_RG_NAME }}
           TERRAFORM_VERSION: ${{ env.TERRAFORM_VERSION }}
-          TERRAFORM_STATE_RG_NAME: ${{ secrets.TERRAFORM_STATE_RG_NAME }}
+          TERRAFORM_STATE_RG_NAME: ${{ env.TERRAFORM_STATE_RG_NAME }}
           # Step specific parameters:
           TERRAFORM_BACKEND_FILE_PATH: ${{ env.TERRAFORM_BACKEND_AZURE_FILE_PATH }}
           TERRAFORM_WORKING_DIR_PATH: ${{ env.TERRAFORM_WORKING_DIR_AZURE_PATH }}
@@ -100,7 +102,7 @@ jobs:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           AZURE_RG_NAME: ${{ env.AZURE_RG_NAME }}
           TERRAFORM_VERSION: ${{ env.TERRAFORM_VERSION }}
-          TERRAFORM_STATE_RG_NAME: ${{ secrets.TERRAFORM_STATE_RG_NAME }}
+          TERRAFORM_STATE_RG_NAME: ${{ env.TERRAFORM_STATE_RG_NAME }}
           # Step specific parameters:
           TERRAFORM_BACKEND_FILE_PATH: ${{ env.TERRAFORM_BACKEND_HELM_FILE_PATH }}
           TERRAFORM_WORKING_DIR_PATH: ${{ env.TERRAFORM_WORKING_DIR_HELM_PATH }}

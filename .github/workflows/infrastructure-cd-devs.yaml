@@ -62,6 +62,7 @@ jobs:
         run: |
           echo "TERRAFORM_STATE_RG_NAME=rg-${{ env.PROJECT_NAME }}-tfstate-${{ env.ENVIRONMENT_SHORT }}-${{ steps.extract_branch.outputs.branch }}" >> $GITHUB_ENV
           echo "ENVIRONMENT_INSTANCE=${{ steps.extract_branch.outputs.branch }}" >> $GITHUB_ENV
+          echo "AZURE_RG_NAME=rg-${{ PROJECT_NAME }}-${{ ENVIRONMENT_SHORT }}-${{ ENVIRONMENT_INSTANCE }}" >> $GITHUB_ENV
           echo "TF_VAR_generate_fqdn=true" >> $GITHUB_ENV
           echo "TF_VAR_azure_spn_object_id=${{ secrets.AZURE_SPN_OBJECT_ID }}" >> $GITHUB_ENV
           echo "TF_VAR_azure_aks_spn_name=${{ secrets.AZURE_AKS_SPN_NAME }}" >> $GITHUB_ENV
@@ -71,14 +72,14 @@ jobs:
         with:
           PROJECT_NAME: ${{ env.PROJECT_NAME }}
           SERVICE_NAME: ${{ env.SERVICE_NAME }}
-          ENVIRONMENT_INSTANCE: ${{ steps.extract_branch.outputs.branch }}
+          ENVIRONMENT_INSTANCE: ${{ env.ENVIRONMENT_INSTANCE }}
           ENVIRONMENT_SHORT: ${{ env.ENVIRONMENT_SHORT }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           AZURE_SPN_ID: ${{ secrets.AZURE_SPN_ID }}
           AZURE_SPN_OBJECT_ID: ${{ secrets.AZURE_SPN_OBJECT_ID }}
           AZURE_SPN_SECRET: ${{ secrets.AZURE_SPN_SECRET }}
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          AZURE_RG_NAME: ${{ secrets.AZURE_RG_NAME }}
+          AZURE_RG_NAME: ${{ env.AZURE_RG_NAME }}
           TERRAFORM_VERSION: ${{ env.TERRAFORM_VERSION }}
           TERRAFORM_STATE_RG_NAME: ${{ secrets.TERRAFORM_STATE_RG_NAME }}
           # Step specific parameters:
@@ -90,14 +91,14 @@ jobs:
         with:
           PROJECT_NAME: ${{ env.PROJECT_NAME }}
           SERVICE_NAME: ${{ env.SERVICE_NAME }}
-          ENVIRONMENT_INSTANCE: ${{ steps.extract_branch.outputs.branch }}
+          ENVIRONMENT_INSTANCE: ${{ env.ENVIRONMENT_INSTANCE }}
           ENVIRONMENT_SHORT: ${{ env.ENVIRONMENT_SHORT }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           AZURE_SPN_ID: ${{ secrets.AZURE_SPN_ID }}
           AZURE_SPN_OBJECT_ID: ${{ secrets.AZURE_SPN_OBJECT_ID }}
           AZURE_SPN_SECRET: ${{ secrets.AZURE_SPN_SECRET }}
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          AZURE_RG_NAME: ${{ secrets.AZURE_RG_NAME }}
+          AZURE_RG_NAME: ${{ env.AZURE_RG_NAME }}
           TERRAFORM_VERSION: ${{ env.TERRAFORM_VERSION }}
           TERRAFORM_STATE_RG_NAME: ${{ secrets.TERRAFORM_STATE_RG_NAME }}
           # Step specific parameters:

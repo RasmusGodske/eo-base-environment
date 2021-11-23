@@ -71,7 +71,7 @@ jobs:
         with:
           PROJECT_NAME: ${{ env.PROJECT_NAME }}
           SERVICE_NAME: ${{ env.SERVICE_NAME }}
-          ENVIRONMENT_INSTANCE: ${{ env.ENVIRONMENT_INSTANCE }}
+          ENVIRONMENT_INSTANCE: ${{ steps.extract_branch.outputs.branch }}
           ENVIRONMENT_SHORT: ${{ env.ENVIRONMENT_SHORT }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           AZURE_SPN_ID: ${{ secrets.AZURE_SPN_ID }}
@@ -90,7 +90,7 @@ jobs:
         with:
           PROJECT_NAME: ${{ env.PROJECT_NAME }}
           SERVICE_NAME: ${{ env.SERVICE_NAME }}
-          ENVIRONMENT_INSTANCE: ${{ env.ENVIRONMENT_INSTANCE }}
+          ENVIRONMENT_INSTANCE: ${{ steps.extract_branch.outputs.branch }}
           ENVIRONMENT_SHORT: ${{ env.ENVIRONMENT_SHORT }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           AZURE_SPN_ID: ${{ secrets.AZURE_SPN_ID }}

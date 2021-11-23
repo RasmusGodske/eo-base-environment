@@ -23,7 +23,7 @@ on:
       - infrastructure/**
       - nidhogg/**
       - env/u/nidhogg.yaml
-      - .github/workflows/infrastructure-cd-dev.yaml
+      - .github/workflows/infrastructure-cd-devs.yaml
   workflow_dispatch: {}
 env:
   TERRAFORM_BACKEND_AZURE_FILE_PATH: './infrastructure/azure/backend.tf'

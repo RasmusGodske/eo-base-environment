@@ -7,7 +7,6 @@ nidhogg:
     targetRevision: "development"
     ingressDomain: dev.energioprindelse.dk
 
-
   argo-cd-proxy-chart:
     argo-cd: 
       server: 

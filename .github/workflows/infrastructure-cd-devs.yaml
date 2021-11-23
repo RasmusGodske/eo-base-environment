@@ -61,7 +61,8 @@ jobs:
         shell: bash
         run: |
           echo "TERRAFORM_STATE_RG_NAME=rg-${{ env.PROJECT_NAME }}-tfstate-${{ env.ENVIRONMENT_SHORT }}-${{ steps.extract_branch.outputs.branch }}" >> $GITHUB_ENV
-          echo "SERVICE_NAME=${{ steps.extract_branch.outputs.branch }}" >> $GITHUB_ENV
+          echo "ENVIRONMENT_INSTANCE=${{ steps.extract_branch.outputs.branch }}" >> $GITHUB_ENV
+          echo "TF_VAR_generate_fqdn=true" >> $GITHUB_ENV
           echo "TF_VAR_azure_spn_object_id=${{ secrets.AZURE_SPN_OBJECT_ID }}" >> $GITHUB_ENV
           echo "TF_VAR_azure_aks_spn_name=${{ secrets.AZURE_AKS_SPN_NAME }}" >> $GITHUB_ENV
 

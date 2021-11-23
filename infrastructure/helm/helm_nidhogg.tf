@@ -17,4 +17,9 @@ resource "helm_release" "nidhogg" {
     name  = "nidhogg.yggdrasil.ingress.loadbalancerResourceGroup"
     value =  var.resource_group_name
   }
+
+  set {
+    name = "nidhogg.yggdrasil.ingressDomain"
+    value = data.azurerm_public_ip.ingress_ip.fqdn
+  }
 }

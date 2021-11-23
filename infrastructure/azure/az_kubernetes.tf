@@ -40,5 +40,5 @@ module "kubernetes" {
   }
 
   identity_type = "UserAssigned"
-  identity_id   = var.azure_aks_spn_create ? azurerm_user_assigned_identity.aks_mid.id : data.azurerm_user_assigned_identity.aks_mid.id
+  identity_id   = var.azure_aks_spn_create ? azurerm_user_assigned_identity.aks_mid[0].id : data.azurerm_user_assigned_identity.aks_mid[0].id
 }

@@ -1,0 +1,16 @@
+nidhogg:
+  installCNI: false
+  monitorNidhogg: false
+
+  yggdrasil:
+    repoURL: "https://github.com/Energinet-DataHub/eo-base-environment.git"
+    targetRevision: "production"
+    ingressDomain: energioprindelse.dk
+
+  argo-cd-proxy-chart:
+    argo-cd: 
+      server: 
+        extraArgs:
+          - --insecure
+          - --rootpath
+          - /admin/argocd

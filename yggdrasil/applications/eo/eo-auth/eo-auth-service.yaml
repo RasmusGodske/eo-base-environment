@@ -3,7 +3,6 @@ eo-base-helm-chart:
     api:
       image:
         tag: v0.0.18
-
   env:
     DEBUG: 1
     SERVICE_URL: https://{{ .Values.ingressDomain }}/api/auth
@@ -13,26 +12,14 @@ eo-base-helm-chart:
     {{- with .Values.eo.auth.env }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
-#    EVENT_BUS_HOST: dev-cluster-kafka-bootstrap.ett-kafka.svc.cluster.local
-#    EVENT_BUS_PORT: 9093
-#  envSecrets:
-#    INTERNAL_TOKEN_SECRET:
-#      secretName: eo-auth-secret
-#      key: tokenSecret
-#    SSN_ENCRYPTION_KEY:
-#      secretName: eo-auth-secret
-#      key: encryptionSecret
-
   envSecrets:
     {{- with .Values.eo.auth.envSecrets }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
-
   sealedSecret:
     {{- with .Values.eo.auth.sealedSecret }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
-  
   ingress:
     hosts:
     - '{{ .Values.ingressDomain }}'

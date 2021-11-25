@@ -10,6 +10,9 @@ eo-base-helm-chart:
     TOKEN_COOKIE_DOMAIN: {{ .Values.ingressDomain }}
     SQL_URI: postgresql://postgres:1234@eo-postgresql.eo-postgresql.svc.cluster.local:5432/auth
     SQL_POOL_SIZE: 1
+    {{- with .Values.eo.eo-auth.env }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
 #    EVENT_BUS_HOST: dev-cluster-kafka-bootstrap.ett-kafka.svc.cluster.local
 #    EVENT_BUS_PORT: 9093
 #  envSecrets:
@@ -19,6 +22,17 @@ eo-base-helm-chart:
 #    SSN_ENCRYPTION_KEY:
 #      secretName: eo-auth-secret
 #      key: encryptionSecret
+
+  envSecrets:
+    {{- with .Values.eo.eo-auth.envSecrets }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+
+  sealedSecret:
+    {{- with .Values.eo.eo-auth.sealedSecret }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  
   ingress:
     hosts:
     - '{{ .Values.ingressDomain }}'

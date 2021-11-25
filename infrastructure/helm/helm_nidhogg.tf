@@ -5,7 +5,7 @@ resource "helm_release" "nidhogg" {
   timeout = 600
 
   values = [
-    file("${path.cwd}/../../env/${var.environment_short}/nidhogg.yaml")
+    file("${path.cwd}/../../env/${var.environment_short}.${var.environment_instance}/nidhogg.yaml")
   ]
 
   set {
@@ -16,5 +16,10 @@ resource "helm_release" "nidhogg" {
   set {
     name  = "nidhogg.yggdrasil.ingress.loadbalancerResourceGroup"
     value =  var.resource_group_name
+  }
+
+  set {
+    name = "nidhogg.yggdrasil.ingressDomain"
+    value = data.azurerm_public_ip.ingress_ip.fqdn
   }
 }

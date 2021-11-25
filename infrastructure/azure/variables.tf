@@ -40,15 +40,22 @@ variable "azure_aks_spn_name" {
   type        = string
 }
 
-# variable "azure_spn_id" {
-#   description = "ID of the service principal, if not set then local AZ user is used."
-#   type        = string
-#   default     = null
-# }
 
-# variable "azure_spn_secret" {
-#   description = "Secret for the Azure service principal used, if not set then local AZ user is used."
-#   type        = string
-#   default     = null
-#   sensitive   = true
-# }
+variable "azure_aks_spn_rg" {
+  description = "rg name"
+  type        = string
+}
+
+
+variable "azure_aks_spn_create" {
+  description = "generate the spn user"
+  type        = bool
+  default     = true
+}
+
+
+variable "generate_fqdn" {
+  description = "generates a fqdn on azure"
+  type        = bool
+  default     = false
+}

@@ -7,7 +7,7 @@ nidhogg:
     targetRevision: "dev/ss"
 
     eo:
-      eo-auth:
+      auth:
         envSecrets: 
           OIDC_CLIENT_ID:
             secretName: eo-oidc-secret

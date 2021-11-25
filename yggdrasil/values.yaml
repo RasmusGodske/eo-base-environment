@@ -25,6 +25,7 @@ applications:
   prometheus:             false
   rook:                   false
   thanos:                 false
+  sealed-secrets:         true
   vault:                  false
   eo-kafka:              false
   eo-postgresql:         true

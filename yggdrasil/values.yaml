@@ -27,11 +27,11 @@ applications:
   sealed-secrets:         true
   thanos:                 false
   vault:                  false
-  eo-kafka:              false
-  eo-frontend:           true
-  eo-auth:               true
-  eo-emissions:          false
-  eo-measurements:       false
-  eo-meteringpoints:     false
-  eo-technologies:       false
-  eo-datahub2:           false
+  eo-kafka:               false
+  eo-frontend:            true
+  eo-auth:                true
+  eo-emissions:           false
+  eo-measurements:        false
+  eo-meteringpoints:      false
+  eo-technologies:        false
+  eo-datahub2:            false

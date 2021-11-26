@@ -23,12 +23,13 @@ traefik:
   {{- if .Values.ingress.loadBalancerIP }}
     spec:
       loadBalancerIP: {{ .Values.ingress.loadBalancerIP }}
-      selector:
-        app: azure-load-balancer
+#      selector:
+#        app: azure-load-balancer
   {{- end }}
 {{- end }}
 
   ports:
+    web: {}
     websecure:
       tls: 
         enabled: true  

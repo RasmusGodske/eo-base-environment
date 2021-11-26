@@ -5,11 +5,14 @@ nidhogg:
   yggdrasil:
     repoURL: "https://github.com/Energinet-DataHub/eo-base-environment.git"
     targetRevision: "-place-holder-"
-    ingressDomain: localhost
+    ingressDomain: localhost.energioprindelse.dk
 
     loadbalancer:
-      ipRangeStart: 172.19.255.200
-      ipRangeStop: 172.19.255.250
+      ipRangeStart: 172.18.0.230
+      ipRangeStop: 172.18.0.240
+
+    ingress:
+      loadBalancerIP: 172.18.0.230
 
     applications: 
       loadbalancer: true
@@ -28,8 +31,8 @@ nidhogg:
         sealedSecret:
           eo-oidc-secret:
             encryptedData:
-              oidc_client_id: "AgB6/2NYrPo8zoz5GNaeJg+ceWI9dc4ku+wxvQQv4LHRwdE4RryZ85dVd3dNGHjytY+2qaq6f8U5N0vteMYpCptK5o1IXPylW4Kd6ZqN7L5SGLFEhWV67m1CmvcG9sH0ytNzDAJLnal5coPcc8/zxSROcp3Bo4IitYVaS37i0ChVqJC/1x5j+jVVu23igBOsPyZ5EyTxwkPNZAaB4M0aEiR84iFHoMMAaNvfojYZhamfjmQv7+ut08kSju+MJJHE1561JVv5BD4MyByE7zAqpV0zTYD2jtdimA87Gro+kGlWNH7UDmIdgVMSdVlJHP2yhP8uFfFHjHzwYDy9oXfrv97u8G2QJvmTRwRzRFFMm0QVnHFj/uWEIe/jy8fCB/svq8EWTaFwHihCBaxPRSPWPyk9DRc2MKE3ieaXZXPV+R9BtdbVKjLs7a9TgpkcUN0PquqBQsSHjOUCKp3TpHpzEZVIJcUguwsHmQax+MsOJsO6vu3XC7uKhdUFuif8n73x1cIkoaODh0Y10mGkjy30aHG9slMfz78YsWbRVmeHLIz1IRphIqbAu5mqftv5YDqhcDV2guVNmqlODs83q/T5Gqjt+E32LdQz2b6Kqsmx5CFkK3yIhQGJ6y1YRiNAPJI35t/Qcd2ijGh32rkvu/6ngfGq8CvVn6rhiA0408qTeFbSdgQBfDM1FzOk65KkSHPaCojPqqQ9tFYoW/uQ30AYeE49oOSd+fcDsFb8hB0rcmLFEPe0Q6E2"
-              oidc_client_secret: "AgAJFWQ11zq2neByPFU88yKY6IACx+o+lwt9I5Cb9IOwtYT1l/igFsteqQe8y0ZQQRnS3QWSTZoWeQy0Cm4jqqxj/grHYrYdAHinzErF1UL+NL6svSKJipvriekNag9gtKd+Z6KhB/WbyzKy36gNkTxSXr9qtM5uARN6oRTd8b9JeBhMLu0Shy08q48nOHcFljnGE9C5qdC8YyYYD5VH6TcxtSfXYWSf2qcoQk/mFquKNMlzi72h7+SqY8cLrI3tyeUlwubU+nja5SUgLxg7e/z8uHJnRYaJQLVdluu7hh4FVYP2KdbV5sXlEA/6y3IQqeXs7oRGKpcKhvsmRP3HxAwcaXF0MCnNTJzoaMaHDERIg1r1JMgwJFbaC5a7nuoS1nL4c0je+OiLFUPElzb5z8sKGbn2KsO2oQ+bUt6Oupw32s6T2rAj9PgNfjPWlob334v9FQGSl83n1OzJN42jX8SMw1RtiuY73x3MHA+d07VoeMxsIYdQ52fXpAeb7NBkUrY/6NKNBoV3Dv7l6LYOFq5zVklhQrPDd1zJEbigI5P3OEM46MxlTQpKHtSATk/HougS9ZcfsemuDYSj7+2yGMtYPfvz6W3GEliO82NHLPNQiKeQ41ybiglFz5EK3xkgE+pHzaDQUeKqHZ4vGFdRnxJ4zR89NRxyI69+gt2q5KSf8R/Dhsm4lyz2tcaSpNRbIDIuI+7H+R1mDXhkesmKRqCiaeGZc030TTryZlNmWFh2H6GIqgWDlrxq0fTo4mh5aE4HvyK78qYrfajGZz6S76jzPVQpdbvrJgnt5fhinIOmAaGXavRPTamG1g=="
+              oidc_client_id: "AgBmfLq8Bmrf2494QHdtNgXWZLueKzgZT+5/Kl24uoXs/mk65yGDZP3BtcHPcY2S0Rwt8YZZrKsZhe1NckBSulVRQEaFzMuoXYdn+Tq+UC8KQp7CkJ2Webi+My6g99m66rz6vpBApr/AnxnQGT4MraLsmxMQSnaOQk5Fq5n4YtORBJDEmh0Gq2arEYYQkFFV00+FqqzA4GJhYrC9ETwEhFw8tkfWdJ7PBuxpkP0vO1hezAo3cLQEcEsNtFAiw2kepsD6QlPu/t0xhCUvKfa/lT/ROIh7iluEl8AdXL2O8TGuZDrzep3Yx3qxhikRHxqs0XdQm4xgp8qvTHKFSoSJBNJrIV22NQxFNXXUNFIwSwzZ+Q+mEUOmk14+Jw2gvCLwmZe9Ly49KrujqutRC5C2qEP0o/+Unxby+TQxkEQeLn+9ODTUyqqiVFc0DWMuJN7BGDBnMwPlXjvsj6QEuqj7VO6MV7BSygBaZ/yjntkmn7IX7T8/m5Bd6wFcDYyudX3+ATelVbxWi3rkdpKm1/tLVXMy6C5QUs64S08pmh5FnDQevVLAv3wrxtnuRafMx2Z1uNb4pi+K0rBITyFfawwrXoVSCm4bwsoIwsXnl8CCKEUKLa1ICTN7Nbhyk6xxKwNOBZk0yJy0/ksOhXoszN4CXDCDjwNwr97noVa9pXUHE+7TcsMLVkqNWShbFeyy2p49VmKtCXz1EpbgQ5CE5Fju1KDmWle59GQLtVdL66LU3U1XbYdDSWyo"
+              oidc_client_secret: "AgBMajF1Rx4NwCUF6TxMy4gouKu6Ej2rvOtbf35sTYCTt7x/TMjrTb67LeK6TxeZFfn509DgWuhUrryIzfzh7LhNcIMcV46DagSGKPnNjhF35VZSJteMBmwsct4P7tezwZmYmyic2lwAhGSiV15pTme9Kd08XXxYHSyM5dfHOFZQ20ForM5g6+MVL9SW0VW0xXTvTz3GIylDNlp/7QleP5LqKxkTeHhpUM2v/Bpop69UqzdcnBlu9B/BeeDJb+X6uQqdo7MQZPBrt4QdyRXWw0yGkuXxZsX3Jpy/UZF09MfwDDdrjoWl/HDGRGtBSWCWAC/6GUD2FaXQrUTUwU5Hsjl7tJm3TxXOLsaaf2A20FF6nWXTjUNfC6SZS3Pfu4Q5tRBkQzqDc5eBKC7xDf3yvCQHdws5Ulie6cTuG4sjOjkfnORkKdIeVoPEJRpUGwDlEf+OuGwk7tQqFdhByX4Izk3quZcMl+b5aG1rWdsJepzWfN9InU0rxZZ9OnXicfex8Vx+BQSAo3tiIuJAmzZpApX3qpDQb8nuGsHbTmHvLw7gQw58VbEwIjMBJskciInJTeQklhdjTtatPecE3+G0JJJDJv0fOJEXHIDChn1hgCdac7zOI9252yvkHnUjH8cdXopkYAazpX4srKyGU8eAKix6cIELytVj/c8qte8Uzul4jipYd3y3YGimJR8d53/bJ0CQSIMisnds0S04qvLzlfuIljCV1FbPeVcFWUhZlyRWBy5x6Hhx8Ko4+URjDMCw+mMYCa00biZ35Z6BT++YTsVIKCjBm6xHBB59IkDtXb+8puSabAlQRCyZWA=="
 
   argo-cd-proxy-chart:
     argo-cd: 

@@ -1,0 +1,52 @@
+nidhogg:
+  installCNI: false
+  monitorNidhogg: false
+
+  yggdrasil:
+    repoURL: "https://github.com/Energinet-DataHub/eo-base-environment.git"
+    targetRevision: "-placeholder-"
+    ingressDomain: local.energioprindelse.dk
+
+    loadbalancer:
+      ipRangeStart: 172.18.0.230
+      ipRangeStop: 172.18.0.240
+
+    ingress:
+      loadBalancerIP: 172.18.0.230
+
+    applications: 
+      loadbalancer: true
+
+    eo:
+      auth:
+        env:
+          OIDC_AUTHORITY_URL: 'https://pp.netseidbroker.dk/op'
+        envSecrets:
+          OIDC_CLIENT_ID:
+            secretName: eo-oidc-secret
+            key: oidc_client_id
+          OIDC_CLIENT_SECRET:
+            secretName: eo-oidc-secret
+            key: oidc_client_secret
+        sealedSecret:
+          eo-oidc-secret:
+            encryptedData:
+              oidc_client_id: "AgBmfLq8Bmrf2494QHdtNgXWZLueKzgZT+5/Kl24uoXs/mk65yGDZP3BtcHPcY2S0Rwt8YZZrKsZhe1NckBSulVRQEaFzMuoXYdn+Tq+UC8KQp7CkJ2Webi+My6g99m66rz6vpBApr/AnxnQGT4MraLsmxMQSnaOQk5Fq5n4YtORBJDEmh0Gq2arEYYQkFFV00+FqqzA4GJhYrC9ETwEhFw8tkfWdJ7PBuxpkP0vO1hezAo3cLQEcEsNtFAiw2kepsD6QlPu/t0xhCUvKfa/lT/ROIh7iluEl8AdXL2O8TGuZDrzep3Yx3qxhikRHxqs0XdQm4xgp8qvTHKFSoSJBNJrIV22NQxFNXXUNFIwSwzZ+Q+mEUOmk14+Jw2gvCLwmZe9Ly49KrujqutRC5C2qEP0o/+Unxby+TQxkEQeLn+9ODTUyqqiVFc0DWMuJN7BGDBnMwPlXjvsj6QEuqj7VO6MV7BSygBaZ/yjntkmn7IX7T8/m5Bd6wFcDYyudX3+ATelVbxWi3rkdpKm1/tLVXMy6C5QUs64S08pmh5FnDQevVLAv3wrxtnuRafMx2Z1uNb4pi+K0rBITyFfawwrXoVSCm4bwsoIwsXnl8CCKEUKLa1ICTN7Nbhyk6xxKwNOBZk0yJy0/ksOhXoszN4CXDCDjwNwr97noVa9pXUHE+7TcsMLVkqNWShbFeyy2p49VmKtCXz1EpbgQ5CE5Fju1KDmWle59GQLtVdL66LU3U1XbYdDSWyo"
+              oidc_client_secret: "AgBMajF1Rx4NwCUF6TxMy4gouKu6Ej2rvOtbf35sTYCTt7x/TMjrTb67LeK6TxeZFfn509DgWuhUrryIzfzh7LhNcIMcV46DagSGKPnNjhF35VZSJteMBmwsct4P7tezwZmYmyic2lwAhGSiV15pTme9Kd08XXxYHSyM5dfHOFZQ20ForM5g6+MVL9SW0VW0xXTvTz3GIylDNlp/7QleP5LqKxkTeHhpUM2v/Bpop69UqzdcnBlu9B/BeeDJb+X6uQqdo7MQZPBrt4QdyRXWw0yGkuXxZsX3Jpy/UZF09MfwDDdrjoWl/HDGRGtBSWCWAC/6GUD2FaXQrUTUwU5Hsjl7tJm3TxXOLsaaf2A20FF6nWXTjUNfC6SZS3Pfu4Q5tRBkQzqDc5eBKC7xDf3yvCQHdws5Ulie6cTuG4sjOjkfnORkKdIeVoPEJRpUGwDlEf+OuGwk7tQqFdhByX4Izk3quZcMl+b5aG1rWdsJepzWfN9InU0rxZZ9OnXicfex8Vx+BQSAo3tiIuJAmzZpApX3qpDQb8nuGsHbTmHvLw7gQw58VbEwIjMBJskciInJTeQklhdjTtatPecE3+G0JJJDJv0fOJEXHIDChn1hgCdac7zOI9252yvkHnUjH8cdXopkYAazpX4srKyGU8eAKix6cIELytVj/c8qte8Uzul4jipYd3y3YGimJR8d53/bJ0CQSIMisnds0S04qvLzlfuIljCV1FbPeVcFWUhZlyRWBy5x6Hhx8Ko4+URjDMCw+mMYCa00biZ35Z6BT++YTsVIKCjBm6xHBB59IkDtXb+8puSabAlQRCyZWA=="
+
+  argo-cd-proxy-chart:
+    argo-cd: 
+      controller: 
+        replicas: 1
+        env: []
+        enableStatefulSet: false
+      redis-ha: 
+        enabled: false
+      redis:
+        enabled: true
+      server: 
+        replicas: 1
+        extraArgs:
+          - --insecure
+          - --rootpath
+          - /admin/argocd

@@ -4,7 +4,7 @@ nidhogg:
 
   yggdrasil:
     repoURL: "https://github.com/Energinet-DataHub/eo-base-environment.git"
-    targetRevision: "local/mcs"
+    targetRevision: "-placeholder-"
     ingressDomain: local.energioprindelse.dk
 
     loadbalancer:
@@ -12,6 +12,8 @@ nidhogg:
       ipRangeStop: 127.0.0.245
 
     ingress:
+      webPort: 8000
+      websecurePort: 8443
       loadBalancerIP: 127.0.0.240
 
     applications: 

@@ -37,11 +37,15 @@ nidhogg:
 
   argo-cd-proxy-chart:
     argo-cd: 
+      controller: 
+        replicas: 1
+        env: []
       redis-ha: 
         enabled: false
       redis:
         enabled: true
       server: 
+        replicas: 1
         extraArgs:
           - --insecure
           - --rootpath

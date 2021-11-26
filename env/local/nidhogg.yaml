@@ -6,7 +6,11 @@ nidhogg:
     repoURL: "https://github.com/Energinet-DataHub/eo-base-environment.git"
     targetRevision: "-place-holder-"
     ingressDomain: localhost
-    
+
+    loadbalancer:
+      ipRangeStart: 172.19.255.200
+      ipRangeStop: 172.19.255.250
+
     applications: 
       loadbalancer: true
 

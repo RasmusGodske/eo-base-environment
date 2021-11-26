@@ -37,6 +37,10 @@ nidhogg:
 
   argo-cd-proxy-chart:
     argo-cd: 
+      redis-ha: 
+        enabled: false
+      redis:
+        enabled: true
       server: 
         extraArgs:
           - --insecure

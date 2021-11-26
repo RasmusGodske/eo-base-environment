@@ -24,6 +24,6 @@ eo-base-helm-chart:
     httpMiddelwares:
     - name: https-only
       namespace: default
-{{- if (index .Values.applications cert-manager) }}
+{{- if (index .Values.applications "cert-manager") }}
     tlsSecretName: elop-cert
 {{- end }}

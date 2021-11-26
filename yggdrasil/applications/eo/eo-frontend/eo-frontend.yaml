@@ -2,7 +2,7 @@ eo-base-helm-chart:
   ingress:
     hosts:
       - {{ .Values.ingressDomain }}
-{{- if (index .Values.applications cert-manager) }}
+{{- if (index .Values.applications "cert-manager") }}
     httpMiddelwares:
       - name: https-only
         namespace: default

@@ -1,21 +1,22 @@
 nidhogg:
-  installCNI: true
+  installCNI: false
   monitorNidhogg: false
 
   yggdrasil:
     repoURL: "https://github.com/Energinet-DataHub/eo-base-environment.git"
-    targetRevision: "-place-holder-"
+    targetRevision: "local/mcs"
     ingressDomain: localhost.energioprindelse.dk
 
     loadbalancer:
-      ipRangeStart: 172.18.0.230
-      ipRangeStop: 172.18.0.240
+      ipRangeStart: 127.0.0.240
+      ipRangeStop: 127.0.0.245
 
     ingress:
-      loadBalancerIP: 172.18.0.230
+      loadBalancerIP: 127.0.0.240
 
     applications: 
       loadbalancer: true
+      cert-manager: false
 
     eo:
       auth:

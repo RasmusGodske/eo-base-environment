@@ -13,15 +13,19 @@ traefik:
   service:
     enabled: true
     type: LoadBalancer
-{{- if and .Values.ingress .Values.ingress.loadbalancerResourceGroup }}
+{{- if .Values.ingress }}
+  {{- if .Values.ingress.loadbalancerResourceGroup }}
     annotations:
       service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ .Values.ingress.loadbalancerResourceGroup | quote }}
+  {{- end }}
 {{- end }}
-{{- if and .Values.ingress .Values.ingress.loadBalancerIP }}
+{{- if .Values.ingress }}
+  {{- if .Values.ingress.loadBalancerIP }}
     spec:
       loadBalancerIP: {{ .Values.ingress.loadBalancerIP }}
       selector:
         app: azure-load-balancer
+  {{- end }}
 {{- end }}
 
   ports:

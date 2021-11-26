@@ -29,8 +29,10 @@ traefik:
 {{- end }}
 
   ports:
-    web: {}
+    web:
+      exposedPort: 8000
     websecure:
+      exposedPort: 8433
       tls: 
         enabled: true
 

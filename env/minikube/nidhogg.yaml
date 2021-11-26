@@ -1,5 +1,4 @@
 nidhogg:
-  installCNI: false
   monitorNidhogg: false
 
   yggdrasil:

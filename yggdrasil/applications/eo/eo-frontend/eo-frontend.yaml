@@ -5,7 +5,9 @@ eo-base-helm-chart:
     httpMiddelwares:
       - name: https-only
         namespace: default
+{{- if .Values.applications.cert-manager }}
     tlsSecretName: elop-cert
+{{- end }}
     pathExceptions:
       - /api
       - /auth

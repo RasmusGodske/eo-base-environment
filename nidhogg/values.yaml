@@ -56,8 +56,6 @@ nidhogg:
                 hs = {}
                 hs.status = "Healthy"
                 return hs
-        service: 
-          type: NodePort
 
       configs:
         secret:

@@ -1,18 +1,19 @@
 nidhogg:
-  installCNI: true
   monitorNidhogg: false
 
   yggdrasil:
     repoURL: "https://github.com/Energinet-DataHub/eo-base-environment.git"
-    targetRevision: "-place-holder-"
-    ingressDomain: localhost.energioprindelse.dk
+    targetRevision: "-placeholder-"
+    ingressDomain: local.energioprindelse.dk
 
     loadbalancer:
-      ipRangeStart: 172.18.0.230
-      ipRangeStop: 172.18.0.240
+      ipRangeStart: 127.0.0.240
+      ipRangeStop: 127.0.0.245
 
     ingress:
-      loadBalancerIP: 172.18.0.230
+      webPort: 8000
+      websecurePort: 8443
+      loadBalancerIP: 127.0.0.240
 
     applications: 
       loadbalancer: true
@@ -36,7 +37,16 @@ nidhogg:
 
   argo-cd-proxy-chart:
     argo-cd: 
+      controller: 
+        replicas: 1
+        env: []
+        enableStatefulSet: false
+      redis-ha: 
+        enabled: false
+      redis:
+        enabled: true
       server: 
+        replicas: 1
         extraArgs:
           - --insecure
           - --rootpath

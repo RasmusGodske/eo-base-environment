@@ -29,10 +29,16 @@ traefik:
 {{- end }}
 
   ports:
-    web: {}
+{{- if .Values.ingress.webPort }}
+    web:
+      exposedPort: {{ .Values.ingress.webPort }}
+{{- end}}
     websecure:
+{{- if .Values.ingress.websecurePort }}
+      exposedPort: {{ .Values.ingress.websecurePort }}
+{{- end}}
       tls: 
-        enabled: true  
+        enabled: true
 
   logs:
     access:

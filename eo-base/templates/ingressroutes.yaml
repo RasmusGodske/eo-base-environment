@@ -18,7 +18,7 @@ spec:
         - name: nidhogg-argocd-server
           port: 80
           scheme: h2c
-{{- if .Values.applications.cert-manager }}
+{{- if (index .Values.applications cert-manager) }}
   tls:
     secretName: elop-cert
 {{- end }}

@@ -40,6 +40,7 @@ nidhogg:
       controller: 
         replicas: 1
         env: []
+        enableStatefulSet: false
       redis-ha: 
         enabled: false
       redis:

@@ -2,12 +2,10 @@ eo-base-helm-chart:
   ingress:
     hosts:
       - {{ .Values.ingressDomain }}
-{{- if (index .Values.applications "cert-manager") }}
     httpMiddelwares:
       - name: https-only
         namespace: default
     tlsSecretName: elop-cert
-{{- end }}
     pathExceptions:
       - /api
       - /auth

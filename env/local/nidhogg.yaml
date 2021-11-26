@@ -16,7 +16,6 @@ nidhogg:
 
     applications: 
       loadbalancer: true
-      cert-manager: false
 
     eo:
       auth:

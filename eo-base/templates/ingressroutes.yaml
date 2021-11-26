@@ -18,10 +18,8 @@ spec:
         - name: nidhogg-argocd-server
           port: 80
           scheme: h2c
-{{- if (index .Values.applications "cert-manager") }}
   tls:
     secretName: elop-cert
-{{- end }}
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute

@@ -32,7 +32,7 @@ traefik:
     web: {}
     websecure:
       tls: 
-        enabled: {{ .Values.applications.cert-manager }}  
+        enabled: {{ (index .Values.applications cert-manager)}}  
 
   logs:
     access:

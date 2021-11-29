@@ -45,3 +45,9 @@ variable "generate_fqdn" {
   type        = bool
   default     = false
 }
+
+variable "assign_network_contributor" {
+  description = "Enables assignment of network contributor role to AKS identity"
+  type        = bool
+  default     = false
+}

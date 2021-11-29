@@ -64,6 +64,7 @@ jobs:
           echo "ENVIRONMENT_INSTANCE=${{ steps.extract_branch.outputs.branch }}" >> $GITHUB_ENV
           echo "AZURE_RG_NAME=rg-${{ env.PROJECT_NAME }}-${{ env.ENVIRONMENT_SHORT }}-${{ steps.extract_branch.outputs.branch }}" >> $GITHUB_ENV
           echo "TF_VAR_generate_fqdn=true" >> $GITHUB_ENV
+          echo "TF_VAR_assign_network_contributor=true" >> $GITHUB_ENV
           echo "TF_VAR_azure_spn_object_id=${{ secrets.AZURE_SPN_OBJECT_ID }}" >> $GITHUB_ENV
           echo "TF_VAR_azure_aks_spn_name=${{ secrets.AZURE_AKS_SPN_NAME }}" >> $GITHUB_ENV
           echo "TF_VAR_azure_aks_spn_create=false" >> $GITHUB_ENV

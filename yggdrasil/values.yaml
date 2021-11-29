@@ -24,11 +24,11 @@ applications:
   ntp:                    false
   prometheus:             false
   rook:                   false
+  sealed-secrets:         true
   thanos:                 false
   sealed-secrets:         true
   vault:                  false
   eo-kafka:              false
-  eo-postgresql:         true
   eo-frontend:           true
   eo-auth:               true
   eo-emissions:          false

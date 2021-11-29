@@ -26,7 +26,6 @@ applications:
   rook:                   false
   sealed-secrets:         true
   thanos:                 false
-  sealed-secrets:         true
   vault:                  false
   eo-kafka:              false
   eo-frontend:           true

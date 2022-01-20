@@ -2,7 +2,7 @@ eo-base-helm-chart:
   deployments:
     app:
       image:
-        tag: v0.0.86
+        tag: v0.0.87
   ingress:
     hosts:
       - {{ .Values.ingressDomain }}
